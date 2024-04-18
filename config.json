@@ -1,0 +1,35 @@
+{
+    "KQI_types": {
+        "initPlayingTime": "continuous",
+        "videoWidth": "discrete",
+        "resolutionSwitches": "continuous",
+        "res5": "continuous",
+        "res4": "continuous",
+        "res3": "continuous",
+        "res0": "continuous",
+        "res1": "continuous",
+        "res2": "continuous",
+        "resolution": "discrete",
+        "resProfile": "continuous",
+        "videoDisplayRate": "continuous",
+        "estimatedTotalBandwidthUsed": "continuous",
+        "stallCount": "continuous",
+        "stallEvents": "continuous",
+        "stallTime": "continuous",
+        "throughput": "continuous",
+        "bufferDuration": "continuous",
+        "rtt": "continuous",
+        "avgStallTimeFixed": "continuous"
+    },
+    "Drop_features": [
+        "time",
+        "xGlobal",
+        "time",
+        "UE_UE_ul_retx",
+        "UE_UE_dl_retx",
+        "ue_count_max",
+        "ue_count_min",
+        "freqs",
+        "total"
+    ]
+}
