@@ -1,56 +1,108 @@
 # Project Title
 
-This project contains three main components: `train_ml_estimators.py`, `DrawMLResults.ipynb`, and `FunctionsRevision.py`.
-
-## train_ml_estimators.py
-
-This script is used to train machine learning models. It uses various utility functions to process the data, train the models, and evaluate their performance.
-
-## DrawMLResults.ipynb
-
-This Jupyter notebook is used to visualize the results of the machine learning models trained by `train_ml_estimators.py`. It generates various plots and metrics to help you understand the performance of the models.
-
-```python
-# Get the feature scores
-feature_scores = (fun.get_feature_scores(targets=targets)).reset_index(inplace=False, drop=True)
-
-# Calculate the MI between input features and targets and input features
-MI = fun.get_mi_inputs_targets_baseline(targets=targets)
-
-# Plot the MI matrix
-fun.draw_heat_map(MI_df = MI, title='Mutual Information Matrix', cbar_label='Information (nat)', path='./figures/2024-04-02/', height_cm=20)
-```
+This project contains two main Python scripts: `FunctionsRevision.py` and `train_ml_estimators.py`.
 
 ## FunctionsRevision.py
 
-This script contains various utility functions that are used throughout the project. These functions assist with data processing, model training, evaluation, and visualization tasks.
+This script contains various utility functions that are used throughout the project. These functions are designed to assist with data processing, model evaluation, and other tasks.
+
+## train_ml_estimators.py
+
+This script is used to train machine learning models. It uses the utility functions from `FunctionsRevision.py` to process the data and evaluate the models.
 
 ## Getting Started
 
-To run these scripts, you will need to have Anaconda installed on your machine and a Conda environment set up.
-
-1. Install the required packages in your Conda environment:
+To run these scripts, you will need Python 3.12.x installed on your machine. You will also need various Python libraries, which can be installed with conda:
 
 ```bash
-conda create --name <env> --file requirements.txt
+conda env create -f environment.yml
 ```
+Double check thst the `name` and `prefix` fields comply with your desired environment name and path.
 
-2. Activate the Conda environment:
-
+Then, switch to the environment:
 ```bash
-conda activate <env>
+conda activate <env_name>
 ```
 
-3. Run the training script:
+## Running the Scripts
+
+To run the scripts, navigate to the directory containing the scripts and use the python command:
 
 ```bash
 python train_ml_estimators.py
+python FunctionsRevision.py
 ```
 
-4. Open the Jupyter notebook to visualize the results:
+## ML-framework configuration
 
-```bash
-jupyter notebook DrawMLResults.ipynb
+Check the flags of the `train_ml_estimators.py` to especify the model targets and the ML algorithms to be tested. Default values:
+
+```python
+# Default values
+config_file = './config'
+dataset_file = r'./data/datasetProm.json'
+feature_modes = ['FS', 'FE', 'NoFE']
+algorithms = ['RF', 'SVR', 'RR', 'NN', 'ABR', 'KNR', 'SVC', 'GNB']
+targets = ['rtt', 'videoWidth', 'initPlayingTime', 'videoDisplayRate', 'avgStallTimeFixed', 'throughput', 'bufferDuration']
+save_model = True
+use_kqi = False
+scale = True
+save_dataset = True
+```
+
+Also, if you want to add new ML algorithms, you probably should edit some functions (adding hyperparameters to be evaluated) 
+
+```python
+# Create a model object with an parameter grid for GridSearchCV tuning
+if algorithm == 'RF':
+        # Create a model object
+        model = RandomForestRegressor(random_state = 0)
+        # Define the parameter space that will be searched over
+        param_grid = {
+                        'model__n_estimators' : np.arange(10, 101, 10),
+                        'model__max_depth' : np.arange(5, 10)
+                                }
+```
+
+Finally, check the `config.json` has configured the all the targets you want to be split from the input features and the features you want to be discarded (i.e., textual info, useless data, etc.). 
+An example for 360-Video can be seen below:
+
+```python
+{
+    "KQI_types": {
+        "initPlayingTime": "continuous",
+        "videoWidth": "discrete",
+        "resolutionSwitches": "continuous",
+        "res5": "continuous",
+        "res4": "continuous",
+        "res3": "continuous",
+        "res0": "continuous",
+        "res1": "continuous",
+        "res2": "continuous",
+        "resolution": "discrete",
+        "resProfile": "continuous",
+        "videoDisplayRate": "continuous",
+        "estimatedTotalBandwidthUsed": "continuous",
+        "stallCount": "continuous",
+        "stallEvents": "continuous",
+        "stallTime": "continuous",
+        "throughput": "continuous",
+        "bufferDuration": "continuous",
+        "rtt": "continuous",
+        "avgStallTimeFixed": "continuous"
+    },
+    "Drop_features": [
+        "time",
+        "xGlobal",
+        "time",
+        "UE_UE_ul_retx",
+        "UE_UE_dl_retx",
+        "ue_count_max",
+        "ue_count_min",
+        "freqs",
+        "total"
+    ]
+}
 ```
 
 ## Contributing

@@ -937,7 +937,7 @@ class Functions:
         '''
         
         # Load the dataset
-        df = pd.read_json(r'./data/datasetProm.json')
+        df = pd.read_json(path)
 
         # Extract the KQIs from the dataset
         Y = df[targets]

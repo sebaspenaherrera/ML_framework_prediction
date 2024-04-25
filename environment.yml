@@ -1,0 +1,13 @@
+name: /root/work/ML/ML
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - scikit-learn
+  - pandas
+  - matplotlib
+  - seaborn
+  - termcolor
+  - ipykernel
+  - tqdm
+prefix: /root/work/ML/ML
