@@ -1,6 +1,7 @@
-# Project Title
+# KQI prediction ML framework
 
-This project contains two main Python scripts: `FunctionsRevision.py` and `train_ml_estimators.py`.
+This project contains two main Python scripts: `FunctionsRevision.py` and `train_ml_estimators.py`. Additional info about the implementation can be found in:
+**[ML-Powered KQI Estimation for XR Services: A Case Study on 360-Video](https://ieeexplore.ieee.org/abstract/document/10584065)**
 
 ## FunctionsRevision.py
 
@@ -102,6 +103,29 @@ An example for 360-Video can be seen below:
         "freqs",
         "total"
     ]
+}
+```
+
+## Citation
+
+If you find this repository useful for your research or projects, please consider citing the associated paper:
+
+**"ML-Powered KQI Estimation for XR Services: A Case Study on 360-Video"**,  published in 
+*IEEE Open Journal of the Communications Society*.
+
+### Citation Format:
+
+```bibtex
+@article{your_paper_key,
+  title={ML-Powered KQI Estimation for XR Services: A Case Study on 360-Video},
+  author={Peñaherrera-Pulla, O. S. and Baena, Carlos and Fortes, Sergio and Barco, Raquel},
+  journal={IEEE Open Journal of the Communications Society (IEEE OJ-COMS)},
+  year={2024},
+  volume={5},
+  number={},
+  pages={4075-4097},
+  doi={10.1109/OJCOMS.2024.3422872},
+  publisher={IEEE}
 }
 ```
 
