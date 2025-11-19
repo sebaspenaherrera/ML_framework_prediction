@@ -136,3 +136,9 @@ Contributions are welcome. Please open an issue to discuss your idea or submit a
 ## License
 
 This project is licensed under the terms of the MIT license.
+
+## ‼️ References
+
+The content of this repository was developed within the framework of the project **MAORI**, "Massive AI for the OpenRadIo b5G/6G network," at the University of Málaga. Please refer to the following article:
+
+[ML-powered KQI estimation for XR services: A case study on 360-video](https://ieeexplore.ieee.org/abstract/document/10584065)
